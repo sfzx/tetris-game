@@ -103,6 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Freeze function
   function freeze () {
     if (current.some(index => squares[currentPosition + index + width].classList.contains('taken'))) {
+      // undraw()
       current.forEach(index => squares[currentPosition + index].classList.add('taken'))
       // Start a new tetromino falling
       random = nextRandom
@@ -115,6 +116,8 @@ document.addEventListener('DOMContentLoaded', () => {
       displayShape()
       addScore()
       gameOver()
+      undraw()
+      draw()
     }
   }
 
@@ -148,14 +151,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const isAtLeftEdge = current.some(index => (currentPosition + index) % width === 0)
     const isAtRightEdge = current.some(index => (currentPosition + index) % width === width - 1)
+    const oneStepToRightEdge = current.some(index => (currentPosition + index) % width === width - 2)
 
-    if (isAtRightEdge) {
-      // if(current[4][0]||current[4][2]) currentPosition +=2
-      // else if (current[4][1]||current[4][3])currentPosition += 1
-      currentPosition -= 1
-    } else if (isAtLeftEdge) {
-      // if(current[4][1]||current[4][3]) currentPosition +=2
-      currentPosition += 1
+    if (current[3] === width * 3 + 1 && oneStepToRightEdge) currentPosition -= 1
+    else if (isAtRightEdge && current[1] !== 1) {
+      if (current[3] === width * 3 + 1) currentPosition -= 2
+      else currentPosition -= 1
+    } else if (isAtLeftEdge && current[1] !== 1) {
+      if (current[3] === width * 3 + 1) currentPosition += 1
+      else currentPosition += 1
     }
     currentRotation++
 
@@ -171,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const displayWidth = 4
   const displayIndex = 0
 
-  // the Tetromino without rotation
+  // the Tetromino
   const upNextTetrominoes = [
     // lTetromino
     [
@@ -210,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ]
   ]
 
-  // diasplay the shape in the moni-grid display
+  // diasplay the shape in the mini-grid display
   function displayShape () {
     // remove any trace of a tetromino from the entire grid
     displaySquares.forEach(square => {

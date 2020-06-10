@@ -13,7 +13,6 @@ h3{
 	max-width: 1170px; 
     margin: 0 auto;
     display: flex;
-    /* justify-content: space-between; */
 }
 
 /* Main game grid */
@@ -45,9 +44,6 @@ h3{
     background-color: cyan;
     border: 2px solid skyblue;
     margin: 0 auto;
-    /* top:0 ; */
-	/* left: 100%;
-	transform: translateX(-100%);  */
 }
 
 .mini-grid div {
@@ -62,7 +58,7 @@ h3{
 /* Start/pause button */
 #start-button {
     font-family: 'Indie Flower', cursive;
-    font-size: 20px;
+    font-size: 18px;
     text-align: center;
     display: block;
     height: 40px;
