@@ -1,7 +1,22 @@
-.container {
-    display: flex;
+body {
+    text-align: center;
+    margin: 0; 
+    font-family: 'Indie Flower', cursive;
 }
 
+h3{
+    font-size: 30px;
+}
+
+.container {
+    width: 100%;
+	max-width: 1170px; 
+    margin: 0 auto;
+    display: flex;
+    /* justify-content: space-between; */
+}
+
+/* Main game grid */
 .grid {
     width: 400px;
     height: 800px;
@@ -13,24 +28,50 @@
 
 .grid div {
     height: 40px;
-    width: 40px;   
+    width: 40px; 
 }
 
 .tetromino {
-    background-color: blue;
+    background-color: rgb(255, 0, 98);
+    box-shadow:0px 0px 0px 5px rgb(58, 39, 143) inset;
 }
 
+/* Mini greid wich show next tetromino */
 .mini-grid {
-    margin-left: 50px;
-    width: 80px;
-    height: 80px;
+    width: 120px;
+    height: 120px;
     display: flex;
     flex-wrap: wrap;
     background-color: cyan;
     border: 2px solid skyblue;
+    margin: 0 auto;
+    /* top:0 ; */
+	/* left: 100%;
+	transform: translateX(-100%);  */
 }
 
 .mini-grid div {
-    height: 20px;
-    width: 20px;
+    height: 30px;
+    width: 30px;
+}
+
+.tetromino-mini {
+    box-shadow:0px 0px 0px 3px rgb(58, 39, 143) inset;
+}
+
+/* Start/pause button */
+#start-button {
+    font-family: 'Indie Flower', cursive;
+    font-size: 20px;
+    text-align: center;
+    display: block;
+    height: 40px;
+    width: 120px;
+    margin-bottom: 10px;
+    background-color: cyan;
+    border: solid 4px skyblue;
+    outline: none;
+    cursor: pointer;
+    margin-top: 50px;
+    
 }
